@@ -1,0 +1,20 @@
+# test output
+.output
+
+# local .terraform directory
+**/.terraform/*
+
+# terraform state files
+*.tfstate
+*.tfstate.*
+
+# terraform variable files, might include sensitive data
+*.tfvars
+
+# Mac OS folder information
+.DS_Store
+
+# Idea Files
+.idea
+*.idea
+**/.idea/*

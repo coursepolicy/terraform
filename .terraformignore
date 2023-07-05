@@ -1,0 +1,11 @@
+.git/
+
+# local .terraform directory
+**/.terraform/*
+
+# terraform state files
+*.tfstate
+*.tfstate.*
+
+# Mac OS folder information
+.DS_Store
