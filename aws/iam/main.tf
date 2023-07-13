@@ -24,15 +24,7 @@ provider "aws" {
 
 module "user-groups" {
   source   = "./modules/user-groups"
-  for_each = {
-    "Engineers"         = {
-      # policy_name        = ""
-      # policy             = jsonencode({})
-    }
-    "EngineersReadOnly" = {}
-    "Designers"         = {}
-    "ProductOwners"     = {}
-  }
+  for_each = {}
 
   name               = each.key
   path               = lookup(each.value, "path", null)
@@ -44,15 +36,7 @@ module "user-groups" {
 module "users" {
   depends_on = [module.user-groups]
   source     = "./modules/users"
-  for_each   = {
-    "cj-tantay" = {
-      force_destroy = true
-      groups: [
-        module.user-groups["Engineers"].name,
-        module.user-groups["EngineersReadOnly"].name,
-      ]
-    }
-  }
+  for_each   = {}
 
   name                 = each.key
   path                 = lookup(each.value, "path", null)
