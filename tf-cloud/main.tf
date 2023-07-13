@@ -22,31 +22,31 @@ provider "tfe" {
 module "workspaces" {
   source = "./modules/cr-workspace"
   for_each = {
-    "route53-management" = {
-      working_directory = "aws/route53"
-    }
+    # "route53-management" = {
+    #   working_directory = "aws/route53"
+    # }
     
     "iam-management" = {
-      working_directory = "aws/iam/environments/staging"
+      working_directory = "aws/iam/environments"
     }
     
-    "core-production" = {
-      allow_destroy_plan = true 
-      working_directory = "tf/environments/production"
-    }
-    "core-staging" = {
-      allow_destroy_plan = true
-      working_directory  = "tf/environments/staging"
-    }
+    # "core-production" = {
+    #   allow_destroy_plan = true 
+    #   working_directory = "tf/environments/production"
+    # }
+    # "core-staging" = {
+    #   allow_destroy_plan = true
+    #   working_directory  = "tf/environments/staging"
+    # }
 
-    "vpc-staging" = {
-      working_directory = "aws/vpc/environments/staging"
-      remote_state_consumers = ["core-staging"]
-    }
-    "vpc-production" = {
-      working_directory = "aws/vpc/environments/production"
-      remote_state_consumers = ["core-production"]
-    }
+    # "vpc-staging" = {
+    #   working_directory = "aws/vpc/environments/staging"
+    #   remote_state_consumers = ["core-staging"]
+    # }
+    # "vpc-production" = {
+    #   working_directory = "aws/vpc/environments/production"
+    #   remote_state_consumers = ["core-production"]
+    # }
   }
   name                   = each.key
   allow_destroy_plan     = lookup(each.value, "allow_destroy_plan", false)
