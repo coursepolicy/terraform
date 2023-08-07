@@ -25,9 +25,11 @@ module "workspaces" {
     # "route53-management" = {
     #   working_directory = "aws/route53"
     # }
-    
-    "iam-management" = {
-      working_directory = "aws/iam/environments"
+    "iam-management-staging" = {
+      working_directory = "aws/iam/environments/staging"
+    }
+    "iam-management-production" = {
+      working_directory = "aws/iam/environments/production"
     }
     
     # "core-production" = {
